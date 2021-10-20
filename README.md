@@ -3,6 +3,7 @@ A simple Tom and Jerry game in Java, player can play as Jerry to run away from T
 The idea of this project was inspired by the previous assignment in school and the legendary helping hand of Bro Code's videos on Youtube.
 
 ############### HOW TO PLAY ################
+
 Run Game.java to Start playing
 Jerry will show as a yellow rectangle, while Tom is a blue rectangle. The cheese is a yellow oval and mousetraps are grey ones.
 PLAYER will press WASD on keyboard to move Jerry, 'W' as MOVE_UP, 'S' as MOVE_DOWN, 'A' as MOVE_LEFT and 'D' as MOVE_RIGHT.

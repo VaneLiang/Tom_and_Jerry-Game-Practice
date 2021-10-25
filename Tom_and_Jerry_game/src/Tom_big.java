@@ -2,18 +2,18 @@ import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.util.Random;
 
-public class Tom extends Rectangle{
+public class Tom_big extends Rectangle{
 
     Random random;
     int xVelocity;
     int yVelocity;
-    int speed = 4;
+    int speed = 8;
     boolean level1 = true;
     boolean level2 = false;
 
     //Level level;
 
-    Tom(int x, int y, int width, int height){
+    Tom_big(int x, int y, int width, int height){
         super(x,y,width,height);
         random = new Random();
 
@@ -62,7 +62,7 @@ public class Tom extends Rectangle{
     }*/
 
     public void drawImage(Graphics g, ImageObserver imageObserver) {
-        Image image = Toolkit.getDefaultToolkit().getImage("images/tom.png");
+        Image image = Toolkit.getDefaultToolkit().getImage("images/tom_big.png");
         g.drawImage(image, x, y, width, height, imageObserver);
     }
 }

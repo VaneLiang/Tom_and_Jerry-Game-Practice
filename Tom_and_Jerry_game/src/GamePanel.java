@@ -13,7 +13,7 @@ public class GamePanel extends JPanel implements Runnable{
     Graphics graphics;
     Jerry jerry;
     Tom tom;
-    Tom tom_big;
+    Tom_big tom_big;
     Cheese cheese;
     Lives lives;
     Score score;
@@ -26,8 +26,8 @@ public class GamePanel extends JPanel implements Runnable{
     Random random;
     Thread gameThread;
 
-    static final int SCREEN_WIDTH = 1000;
-    static final int SCREEN_HEIGHT = 800;
+    static final int SCREEN_WIDTH = 1200;
+    static final int SCREEN_HEIGHT = 900;
     static final Dimension SCREEN_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 
@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable{
     int respawn_jerryY = 300;
     int respawn_tomX = 900;
     int respawn_tomY = 300;
-    static final int UNIT_SIZE = 30;
+    static final int UNIT_SIZE = 50;
     static final int BIG_UNIT_SIZE = UNIT_SIZE * 3;
 
     Mousetraps mousetrap1;
@@ -102,12 +102,12 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void newTom() {
         random = new Random();
-        tom = new Tom(respawn_tomX,respawn_tomY,UNIT_SIZE,UNIT_SIZE);
+        tom = new Tom(respawn_tomX,respawn_tomY,UNIT_SIZE*2,UNIT_SIZE*2);
     }
 
     public void newTomBig(){
         random = new Random();
-        tom_big = new Tom(respawn_tomX, respawn_tomY, UNIT_SIZE*3, UNIT_SIZE*3);
+        tom_big = new Tom_big(respawn_tomX, respawn_tomY, UNIT_SIZE*3, UNIT_SIZE*3);
     }
 
     public void checkMousetraps(){
@@ -211,7 +211,7 @@ public class GamePanel extends JPanel implements Runnable{
             System.out.println("Game Over! Your final Score is: "+ score.jerry + ", You need "+ score_left_to_win + " left to Win!");
             g.setColor(Color.RED);
             g.setFont(new Font("MV Boli", Font.PLAIN, 60));
-            g.drawString("GAME OVER!", 300, 200);
+            g.drawString("GAME OVER!", 400, 200);
         }
         if(win){
             g.clearRect(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -219,36 +219,36 @@ public class GamePanel extends JPanel implements Runnable{
             System.out.println("Congratulations! You Win!");
             g.setColor(Color.RED);
             g.setFont(new Font("MV Boli", Font.PLAIN, 60));
-            g.drawString("WINNER WINNER!", 200, 200);
+            g.drawString("WINNER WINNER!", 300, 200);
         }
 
     }
 
     public void draw(Graphics g){
-        jerry.draw(g);
+        jerry.drawImage(g,this);
         if(level.tom <=2){
-            tom.draw(g);
+            tom.drawImage(g,this);
         }
 
         if(level.tom == 3){
             //System.out.println("draw Big Tom");
-            tom_big.draw(g);
+            tom_big.drawImage(g,this);
         }
-        cheese.draw(g);
+        cheese.drawImage(g,this);
         lives.draw(g);
         score.draw(g);
         level.draw(g);
         if(set_trap1){
-            mousetrap1.draw(g);
+            mousetrap1.drawImage(g,this);
         }
         if(set_trap2){
-            mousetrap2.draw(g);
+            mousetrap2.drawImage(g,this);
         }
         if(set_trap3){
-            mousetrap3.draw(g);
+            mousetrap3.drawImage(g,this);
         }
         if(set_trap4){
-            mousetrap4.draw(g);
+            mousetrap4.drawImage(g,this);
 
         }
 
@@ -277,7 +277,7 @@ public class GamePanel extends JPanel implements Runnable{
             set_trap3 = false;
             set_trap4 = false;
             num_of_mousetrap = 4;
-            System.out.println("Lift Lost!");
+            System.out.println("Life Lost!");
         }
         /////Check Jerry's collision with Big Tom ///////////
         if(jerry.intersects(tom_big) && level.tom ==3){
@@ -291,7 +291,7 @@ public class GamePanel extends JPanel implements Runnable{
             set_trap3 = false;
             set_trap4 = false;
             num_of_mousetrap = 4;
-            System.out.println("Lift Lost!");
+            System.out.println("Life Lost!");
         }
 
         /////Check jerry's collision with cheese //////////
@@ -369,7 +369,7 @@ public class GamePanel extends JPanel implements Runnable{
                 tom_big.x = respawn_tomX;
                 tom_big.y = respawn_tomY;
                 lives.jerry--;
-                System.out.println("Lift Lost!");
+                System.out.println("Life Lost!");
                 set_trap1 = false;
                 set_trap2 = false;
                 set_trap3 = false;
@@ -389,7 +389,7 @@ public class GamePanel extends JPanel implements Runnable{
                 tom_big.x = respawn_tomX;
                 tom_big.y = respawn_tomY;
                 lives.jerry--;
-                System.out.println("Lift Lost!");
+                System.out.println("Life Lost!");
                 set_trap1 = false;
                 set_trap2 = false;
                 set_trap3 = false;
@@ -409,7 +409,7 @@ public class GamePanel extends JPanel implements Runnable{
                 tom_big.x = respawn_tomX;
                 tom_big.y = respawn_tomY;
                 lives.jerry--;
-                System.out.println("Lift Lost!");
+                System.out.println("Life Lost!");
                 set_trap1 = false;
                 set_trap2 = false;
                 set_trap3 = false;
@@ -429,7 +429,7 @@ public class GamePanel extends JPanel implements Runnable{
                 tom_big.x = respawn_tomX;
                 tom_big.y = respawn_tomY;
                 lives.jerry--;
-                System.out.println("Lift Lost!");
+                System.out.println("Life Lost!");
                 set_trap1 = false;
                 set_trap2 = false;
                 set_trap3 = false;

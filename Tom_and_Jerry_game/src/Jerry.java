@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 
@@ -84,15 +85,15 @@ public class Jerry extends Rectangle{
         x += xVelocity;
 
     }
-    public void draw(Graphics g){
+    /*public void draw(Graphics g){
 
         g.setColor(Color.ORANGE);
         g.fillRect(x,y,width,height);
 
+    }*/
 
-
-
-
-
+    public void drawImage(Graphics g, ImageObserver imageObserver) {
+        Image image = Toolkit.getDefaultToolkit().getImage("images/jerry.png");
+        g.drawImage(image, x, y, width, height, imageObserver);
     }
 }
